@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Resources_Scenes/HUD/HUD.gd" type="Script" id=1]
+[ext_resource path="res://Resources_Scenes/Font/alagard_by_pix3m-d6awiwp.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+outline_size = 2
+font_data = ExtResource( 2 )
+
+[node name="HUD" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="HpTexture" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="RollTexture" type="TextureRect" parent="."]
+margin_top = 30.0
+margin_right = 40.0
+margin_bottom = 70.0
+rect_scale = Vector2( 1.5, 1.5 )
+
+[node name="TrowTexture" type="TextureRect" parent="."]
+margin_left = 3.0
+margin_top = 55.0
+margin_right = 34.0
+margin_bottom = 85.0
+expand = true
+
+[node name="Label" type="Label" parent="TrowTexture"]
+margin_left = 36.0
+margin_top = 4.0
+margin_right = 76.0
+margin_bottom = 27.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "0"

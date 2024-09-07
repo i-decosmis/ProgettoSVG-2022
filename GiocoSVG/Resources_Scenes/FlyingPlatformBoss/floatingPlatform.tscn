@@ -1,0 +1,93 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Resources_Scenes/FlyingPlatformBoss/floatingPlatform.gd" type="Script" id=2]
+[ext_resource path="res://Resources_Scenes/FlyingPlatformMediumBoss/floatingPlatform.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Resources_Scenes/Inventory/ItemDrop/ItemGoldenMunitions/ItemGoldenMunitions.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Resources_Scenes/Inventory/ItemDrop/ItemGoldenHealth/ItemHealth.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Resources_Scenes/FlyingPlatformBoss/floating_platform_boss.png" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 0.75, 38.25 )
+
+[node name="Platform" type="StaticBody2D"]
+scale = Vector2( 2, 2 )
+collision_layer = 161
+collision_mask = 161
+script = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 266.9, -3 )
+polygon = PoolVector2Array( -22, 2, -22, -2, -21, -2, -21, -4, -20.5, -4, -20.5, -5, 224, -5, 224, -4, 224.5, -4, 224.5, -3, 226, -3, 226, 2 )
+
+[node name="Polygon2D" type="Polygon2D" parent="CollisionPolygon2D"]
+position = Vector2( -22, -5 )
+texture = ExtResource( 6 )
+texture_scale = Vector2( 1.163, 1 )
+polygon = PoolVector2Array( 0, 0, 246, 0, 246, 1, 246.806, 1, 247, 2, 248, 2, 248, 7, 0, 7 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 368.9, -3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2( -102, 0 )
+polygon = PoolVector2Array( -22, 2, -22, -2, -21, -2, -21, -4, -20.5, -4, -20.5, -5, 224, -5, 224, -4, 224.5, -4, 224.5, -3, 226, -3, 226, 2 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+position = Vector2( 22.4, -3 )
+polygon = PoolVector2Array( -22, 2, -22, -2, -21, -2, -21, -4, -20.5, -4, -20.5, -5, 224, -5, 224, -4, 224.5, -4, 224.5, -3, 226, -3, 226, 2 )
+
+[node name="Polygon2D" type="Polygon2D" parent="CollisionPolygon2D2"]
+position = Vector2( -22, -5 )
+texture = ExtResource( 6 )
+texture_scale = Vector2( 1.163, 1 )
+polygon = PoolVector2Array( 0, 0, 246, 0, 246, 1, 246.806, 1, 247, 2, 248, 2, 248, 7, 0, 7 )
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2( 368.8, -3.4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D2"]
+position = Vector2( -346.3, 0.4 )
+polygon = PoolVector2Array( -22, 2, -22, -2, -21, -2, -21, -4, -20.5, -4, -20.5, -5, 224, -5, 224, -4, 224.5, -4, 224.5, -3, 226, -3, 226, 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 123.4, -2 )
+collision_layer = 524288
+collision_mask = 524288
+
+[node name="BossBorderR" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 368, -37 )
+shape = SubResource( 1 )
+
+[node name="BossBorderL" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -121.9, -37 )
+shape = SubResource( 1 )
+
+[node name="Platform" parent="." instance=ExtResource( 3 )]
+position = Vector2( 452.5, -22.5 )
+scale = Vector2( 1, 1 )
+
+[node name="Platform2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 416.5, -38 )
+scale = Vector2( 1, 1 )
+
+[node name="Platform3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 378, -54.5 )
+scale = Vector2( 1, 1 )
+
+[node name="ItemGoldenMunition" parent="Platform3" instance=ExtResource( 4 )]
+position = Vector2( -0.5, -4.5 )
+
+[node name="Platform4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 36.5, -22.5 )
+scale = Vector2( 1, 1 )
+
+[node name="Platform5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 75.5, -38 )
+scale = Vector2( 1, 1 )
+
+[node name="Platform6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 115, -54.5 )
+scale = Vector2( 1, 1 )
+
+[node name="ItemHealth" parent="Platform6" instance=ExtResource( 5 )]
+position = Vector2( 0, -5.5 )

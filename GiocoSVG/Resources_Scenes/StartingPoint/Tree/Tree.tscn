@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Resources_Scenes/StartingPoint/Tree/tree.png" type="Texture" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( 0, -13 )
+polygon = PoolVector2Array( -6, -1, -4, -4, -2, -6, 4, -211, 3, -5, 4, -4, 3.427, -1.684, 5, -1.714, 6, -1, 7, 0, 7, 2, 7, 5, 5, 6, 3, 7, 1, 10, 1, 10, 1, 11, 2, 12, 3, 12.463, 4, 13, -5, 13, -2, 9, -2.58461, 7.24615, -7, 6, -8, 4, -7, 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
+texture = ExtResource( 1 )
+texture_offset = Vector2( 7.009, 5.998 )
+texture_scale = Vector2( 6.03, 5.512 )
+polygon = PoolVector2Array( -7, -6, 7, -6, 7, 13, -7, 13 )

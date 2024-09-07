@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Resources_Scenes/FlyingPlatformMedium/floating_platform.png" type="Texture" id=1]
+[ext_resource path="res://Resources_Scenes/FlyingPlatformMedium/floatingPlatform.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 0.75, 2.4375 )
+
+[node name="Platform" type="StaticBody2D"]
+scale = Vector2( 2, 2 )
+collision_layer = 37
+collision_mask = 36
+script = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -8, -0.3, -7.822, -0.3, -7.822, -1.41, -7.822, -2, -7.316, -2, 7.50391, -2, 8, -2, 8, -1.41406, 8, 2, 4.5, 2, 1.5, 2, 0, 2, -1.5, 2, -3, 2, -6, 2, -7.83258, 2, -7.833, 0.845, -8, 0.844793 )
+one_way_collision = true
+
+[node name="Polygon2D" type="Polygon2D" parent="CollisionPolygon2D"]
+texture = ExtResource( 1 )
+texture_offset = Vector2( 8.343, 1.978 )
+texture_scale = Vector2( 1.957, 1.774 )
+polygon = PoolVector2Array( -8, -2, 8, -2, 8, 2, -2.5, 2, -8, 2 )
+
+[node name="Area2D" type="Area2D" parent="." groups=["platform"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2( 0, -0.15 )
+scale = Vector2( 1, 1.04688 )
+polygon = PoolVector2Array( -8, -0.3, -7.822, -0.3, -7.822, -1.41, -7.822, -2, -7.316, -2, 7.50391, -2, 8, -2, 8, -1.41406, 8, 2, 5.5, 2.05372, 2, 2.05372, 0, 2.05372, -3, 2, -6, 2.05372, -7.83258, 2, -7.833, 0.845, -8, 0.844793 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 524288
+collision_mask = 524288
+
+[node name="BossBorderR" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 8, -0.5625 )
+shape = SubResource( 1 )
+
+[node name="BossBorderL" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -8, -0.5 )
+shape = SubResource( 1 )
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

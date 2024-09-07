@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Resources_Scenes/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Resources_Scenes/PlatformTest/platform.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/WorldOne/WorldOne.gd" type="Script" id=3]
+[ext_resource path="res://Resources_Scenes/WormBoss/Worm.tscn" type="PackedScene" id=4]
+
+[node name="WorldOne" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 320, -39 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( 0, -74 )
+current = true
+
+[node name="Worm" parent="." instance=ExtResource( 4 )]
+position = Vector2( 408, -87 )
+
+[node name="StaticBody2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 660, -18 )
+scale = Vector2( 6, 9 )

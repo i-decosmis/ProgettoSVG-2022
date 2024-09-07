@@ -1,0 +1,39 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Resources_Scenes/Rope/Rope_resources/4.png" type="Texture" id=1]
+[ext_resource path="res://Resources_Scenes/Rope/Rope_resources/2.png" type="Texture" id=2]
+[ext_resource path="res://Resources_Scenes/Rope/Rope_resources/3.png" type="Texture" id=3]
+[ext_resource path="res://Resources_Scenes/Rope/Rope_resources/5.png" type="Texture" id=4]
+[ext_resource path="res://Resources_Scenes/Rope/Rope_resources/1.png" type="Texture" id=5]
+[ext_resource path="res://Resources_Scenes/Rope/Rope.gd" type="Script" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "rope",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 2, 26.5 )
+
+[node name="Rope" type="Node2D" groups=["rope"]]
+position = Vector2( 0, 9.09495e-13 )
+script = ExtResource( 6 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." groups=["rope"]]
+position = Vector2( 4, 30 )
+frames = SubResource( 1 )
+animation = "rope"
+
+[node name="Area2D" type="Area2D" parent="." groups=["rope"]]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["rope"]]
+position = Vector2( 4, 30 )
+shape = SubResource( 2 )
+disabled = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

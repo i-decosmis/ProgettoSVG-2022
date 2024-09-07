@@ -1,0 +1,138 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Texturina-Italic-VariableFont_opsz,wght.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Resources_Scenes/Dialog/dialog_box.gd" type="Script" id=2]
+[ext_resource path="res://Resources_Scenes/Button/ButtonNext/button_next.png" type="Texture" id=3]
+[ext_resource path="res://Resources_Scenes/Button/ButtonNext/button_next_hover.png" type="Texture" id=4]
+[ext_resource path="res://Resources_Scenes/Button/ButtonNext/button_next_pressed.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 7
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+expand_margin_left = 15.0
+expand_margin_right = 15.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Button:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Button:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="dialog_box" type="Node2D"]
+position = Vector2( 3, -10 )
+script = ExtResource( 2 )
+arr = [ "Dove sono...
+come sono arrivato qui?", "Questo posto è pieno di strane creature..." ]
+
+[node name="Control" type="Control" parent="."]
+rect_scale = Vector2( 1e-05, 1e-05 )
+
+[node name="Label" type="Label" parent="Control"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 18.0
+margin_top = -17.0
+margin_right = 120.0
+margin_bottom = -5.0
+grow_vertical = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Dove sono...come sono arrivato qui?"
+
+[node name="Panel" type="Panel" parent="Control/Label"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
+anims/open = SubResource( 4 )
+
+[node name="Button" type="Button" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 2.0
+margin_right = 52.0
+margin_bottom = 22.0
+rect_scale = Vector2( 0.3, 0.3 )
+text = "Next"
+
+[node name="TextureButton" type="TextureButton" parent="Button"]
+margin_left = -7.0
+margin_top = -7.0
+margin_right = 120.0
+margin_bottom = 54.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 4 )
+expand = true
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button/TextureButton" to="." method="_on_TextureButton_pressed"]

@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/WorldEasy/WorldEasy.gd" type="Script" id=1]
+[ext_resource path="res://Resources_Scenes/Backgrounds/Forest/parallax-forest-back-trees.png" type="Texture" id=2]
+[ext_resource path="res://Resources_Scenes/Backgrounds/Forest/parallax-forest-back-trees_background.png" type="Texture" id=3]
+[ext_resource path="res://Resources_Scenes/Backgrounds/Forest/parallax-forest-lights.png" type="Texture" id=4]
+[ext_resource path="res://Resources_Scenes/Backgrounds/Forest/parallax-forest-front-trees.png" type="Texture" id=5]
+[ext_resource path="res://Resources_Scenes/Backgrounds/Forest/parallax-forest-middle-trees.png" type="Texture" id=6]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Background" type="Node2D" parent="."]
+position = Vector2( 0, -300 )
+
+[node name="StaticBackground" type="ParallaxBackground" parent="Background"]
+offset = Vector2( 0, -600 )
+transform = Transform2D( 1, 0, 0, 1, 0, -600 )
+
+[node name="Back_Tree_Background" type="ParallaxLayer" parent="Background/StaticBackground"]
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background/StaticBackground/Back_Tree_Background"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="NormalBackground" type="ParallaxBackground" parent="Background"]
+offset = Vector2( 0, -300 )
+transform = Transform2D( 1, 0, 0, 1, 0, -300 )
+
+[node name="Back_Tree" type="ParallaxLayer" parent="Background/NormalBackground"]
+motion_scale = Vector2( 0.2, 1 )
+motion_mirroring = Vector2( 600, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background/NormalBackground/Back_Tree"]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Light" type="ParallaxLayer" parent="Background/NormalBackground"]
+motion_scale = Vector2( 0.4, 1 )
+motion_mirroring = Vector2( 600, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background/NormalBackground/Light"]
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Middle_Tree" type="ParallaxLayer" parent="Background/NormalBackground"]
+motion_scale = Vector2( 0.6, 1 )
+motion_mirroring = Vector2( 600, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background/NormalBackground/Middle_Tree"]
+texture = ExtResource( 6 )
+centered = false
+
+[node name="Front_Tree" type="ParallaxLayer" parent="Background/NormalBackground"]
+motion_scale = Vector2( 0.8, 1 )
+motion_mirroring = Vector2( 600, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background/NormalBackground/Front_Tree"]
+texture = ExtResource( 5 )
+centered = false

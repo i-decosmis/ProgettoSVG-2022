@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Resources_Scenes/Objects/sword/sword_effect.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("SwordEffect:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "sword"
+length = 0.41
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("SwordEffect:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+
+[node name="sword" type="Node2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/sword = SubResource( 3 )
+
+[node name="SwordEffect" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+hframes = 5
+
+[node name="Area2D" type="Area2D" parent="SwordEffect"]
+position = Vector2( 52, -10 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SwordEffect/Area2D"]
+position = Vector2( -42, 17 )
+polygon = PoolVector2Array( -16, -9, -8, -9, -8, -8, -6, -8, -6, -7, -5, -7, -5, -6, -4, -6, -4, -3, -5, -3, -5, -2, -6, -2, -6, -1, -8, -1, -8, 0, -16, 0, -16, -1, -11, -1, -11, -2, -9, -2, -9, -3, -8, -3, -8, -5, -9, -5, -9, -6, -11, -6, -11, -7, -15, -7, -15, -8, -16, -8 )

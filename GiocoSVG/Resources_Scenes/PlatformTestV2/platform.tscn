@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Resources_Scenes/PlatformTestV2/platformTest.png" type="Texture" id=1]
+[ext_resource path="res://Resources_Scenes/PlatformTestV2/platform.gd" type="Script" id=2]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+scale = Vector2( 3, 3 )
+collision_layer = 33
+collision_mask = 33
+script = ExtResource( 2 )
+
+[node name="CollisionPolygon2DTerrain" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -8, -2, 8, -2, 8, 2, -8, 2 )
+
+[node name="Polygon2DTerrain" type="Polygon2D" parent="CollisionPolygon2DTerrain"]
+texture = ExtResource( 1 )
+texture_offset = Vector2( 7.957, 1.978 )
+texture_scale = Vector2( 3.024, 2.557 )
+polygon = PoolVector2Array( -8, -2, 8, -2, 8, 2, -8, 2 )
+
+[node name="Area2D" type="Area2D" parent="." groups=["terrain"]]
+
+[node name="CollisionPolygon2DTerrain" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PoolVector2Array( -8, -2.33333, 8, -2.33333, 8, 2, -8, 2 )

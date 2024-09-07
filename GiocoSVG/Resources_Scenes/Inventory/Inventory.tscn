@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Resources_Scenes/Inventory/Inventory.gd" type="Script" id=1]
+[ext_resource path="res://Resources_Scenes/Inventory/Exit.gd" type="Script" id=2]
+[ext_resource path="res://Resources_Scenes/Inventory/Save.gd" type="Script" id=3]
+[ext_resource path="res://Resources_Scenes/Button/button_save/button_save.png" type="Texture" id=4]
+[ext_resource path="res://Resources_Scenes/Button/button_exit/button_exit_hover.png" type="Texture" id=5]
+[ext_resource path="res://Resources_Scenes/Button/button_save/button_save_hover.png" type="Texture" id=6]
+[ext_resource path="res://Resources_Scenes/Button/button_exit/button_exit.png" type="Texture" id=7]
+[ext_resource path="res://Resources_Scenes/Button/button_exit/button_exit_pressed.png" type="Texture" id=8]
+[ext_resource path="res://Resources_Scenes/Button/button_save/button_save_pressed.png" type="Texture" id=9]
+[ext_resource path="res://Resources_Scenes/Button/xbox_button/xbox_360_buttons_sheet_zaph.png" type="Texture" id=10]
+
+[node name="Inventory" type="Node2D"]
+visible = false
+position = Vector2( 337, 232 )
+scale = Vector2( 0.2, 0.2 )
+script = ExtResource( 1 )
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_left = -1915.0
+margin_top = -1395.0
+margin_right = -1474.0
+margin_bottom = -993.0
+
+[node name="Save" type="TextureButton" parent="GridContainer"]
+margin_right = 441.0
+margin_bottom = 199.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 6 )
+script = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="GridContainer/Save"]
+position = Vector2( 470, 75 )
+scale = Vector2( 2.55529, 2.5127 )
+texture = ExtResource( 10 )
+hframes = 4
+vframes = 4
+
+[node name="Exit" type="TextureButton" parent="GridContainer"]
+margin_top = 203.0
+margin_right = 441.0
+margin_bottom = 402.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 5 )
+script = ExtResource( 2 )
+
+[node name="Sprite3" type="Sprite" parent="GridContainer/Exit"]
+position = Vector2( 490, 82 )
+scale = Vector2( 2.47956, 2.50635 )
+texture = ExtResource( 10 )
+hframes = 4
+vframes = 4
+frame = 2
+
+[connection signal="pressed" from="GridContainer/Save" to="GridContainer/Save" method="_on_Save_pressed"]
+[connection signal="pressed" from="GridContainer/Exit" to="GridContainer/Exit" method="_on_Exit_pressed"]

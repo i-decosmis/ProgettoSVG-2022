@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Resources_Scenes/Font/alagard_by_pix3m-d6awiwp.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Resources_Scenes/Button/xbox_button/xbox_360_buttons_sheet_zaph.png" type="Texture" id=2]
+[ext_resource path="res://Resources_Scenes/Button/keybaord_button/esc.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[node name="EscTutorial" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+margin_left = -121.0
+margin_top = -112.0
+margin_right = 133.0
+margin_bottom = -7.0
+custom_fonts/font = SubResource( 1 )
+text = "Premi     ,     per salvare o chiudere
+il gioco
+Ripremi     ,     per chiudere il menu'"
+
+[node name="Sprite2" type="Sprite" parent="Label"]
+position = Vector2( 88, 9.00001 )
+scale = Vector2( 0.673077, 0.622396 )
+texture = ExtResource( 2 )
+hframes = 4
+vframes = 4
+frame = 11
+
+[node name="Sprite3" type="Sprite" parent="Label"]
+position = Vector2( 103, 44 )
+scale = Vector2( 0.673077, 0.622396 )
+texture = ExtResource( 2 )
+hframes = 4
+vframes = 4
+frame = 11
+
+[node name="Sprite" type="Sprite" parent="Label"]
+position = Vector2( 55, 8 )
+scale = Vector2( 0.0656566, 0.0703593 )
+texture = ExtResource( 3 )
+
+[node name="Sprite4" type="Sprite" parent="Label"]
+position = Vector2( 70, 44 )
+scale = Vector2( 0.0656566, 0.0703593 )
+texture = ExtResource( 3 )

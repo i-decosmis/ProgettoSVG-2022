@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bossWakeUp.wav-d43d2cc02f9cdc4b207a17dcf0fb0d95.sample"
+
+[deps]
+
+source_file="res://Resources_Scenes/Audio/bossWakeUp.wav"
+dest_files=[ "res://.import/bossWakeUp.wav-d43d2cc02f9cdc4b207a17dcf0fb0d95.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
